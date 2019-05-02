@@ -1,51 +1,29 @@
-const http = require('http');
-
 const express = require('express');
 const bodyParser = require('body-parser')
+const path = require('path');
+
+//router imports
+const adminRoutes = require('./routes/admin')
+const shopRoutes = require('./routes/shop')
+
 const app = express();
 
-
-// using middleware function or libraries
-// app.use((req, res, next) => {
-//     console.log('Iam in middleware');
-//     next();
-// });
-
-// app.use((req, res, next) => {
-//     console.log('Iam in next middleware')
-//     res.send('<h1>Helloo from Express</h1>');
-// });
-
 //use bodyparser to parse request
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 
-//route
-app.use('/',(req, res, next) => {
-    console.log('This always runs');
-    next();
+
+//use static files 
+app.use(express.static(path.join(__dirname,'public')));
+
+//use the routes
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
+
+//404 - error page
+app.use((req, res, next) => {
+    // res.status(404).send('<h1>Page not Found</h1>')
+    res.status(404).sendFile(path.join(__dirname,'views/404.html'));
 });
 
-// app.use('/add-product',(req, res, next) => {
-app.get('/add-product',(req, res, next) => {
-    console.log('Iam in "/add-product" route')
-    // res.send('<h1>Welcome to "Add Product" page</h1>');
-    res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Send</button></form>');
-});
-
-// app.use('/product',(req,res,next) => {
-app.post('/product',(req,res,next) => {
-    console.log(req.body);
-    res.redirect('/');
-
-});
-
-app.use('/',(req, res, next) => {
-    console.log('Iam in "/" route')
-    res.send('<h1>Helloo from Express</h1>');
-});
-
-
-
-// const server = http.createServer(app);
-// server.listen(3000);
+//init the server
 app.listen(3000);
