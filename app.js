@@ -3,8 +3,11 @@ const bodyParser = require('body-parser');
 const expressHbs = require('express-handlebars')
 const path = require('path');
 
+const errorController = require('./controllers/error')
+
+
 //router imports
-const adminData = require('./routes/admin')
+const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
 
 const app = express();
@@ -22,14 +25,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public')));
 
 //use the routes
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 //404 - error page
-app.use((req, res, next) => {
-    // res.status(404).sendFile(path.join(__dirname,'views/404.html'));
-    res.status(404).render('404', {pageTitle: 'Page Not Found'});
-});
+app.use(errorController.get404Page);
 
 //init the server
 app.listen(3000);
