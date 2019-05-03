@@ -10,7 +10,9 @@
   "author": "hari v",
   "license": "ISC",
   "nodemonConfig": {
-    "ignore": ["data/*"]
+    "ignore": [
+      "data/*"
+    ]
   },
   "devDependencies": {
     "nodemon": "^1.19.0"

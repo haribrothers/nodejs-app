@@ -5,15 +5,13 @@
 
 .product__title {
     font-size: 1.2rem;
-    text-align: center;
 }
 
 .product__price {
-    text-align: center;
     color: #4d4d4d;
-    margin-bottom: 0.5rem;
+    padding-bottom: 1rem;
 }
 
 .product__description {
-    text-align: center;
+    color: #999;
 }

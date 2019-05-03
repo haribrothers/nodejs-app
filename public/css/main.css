@@ -76,9 +76,11 @@ main {
   
   .card__header,
   .card__content {
-    padding: 1rem;
+    padding: 0.5rem 1rem;
   }
-  
+  .card__header {
+      border-bottom: 1px solid #ddd;
+  }
   .card__header h1,
   .card__content h1,
   .card__content h2,

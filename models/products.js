@@ -5,7 +5,7 @@ const p = path.join(path.dirname(process.mainModule.filename),'data','products.j
 const getProductsFromFile = (cb) => {
     fs.readFile(p,(err,fileContent) =>{
         let products = [];
-        if(err) {
+        if(err || fileContent.byteLength <= 0) {
             cb([]);
         }else{
             cb(JSON.parse(fileContent));
@@ -14,8 +14,11 @@ const getProductsFromFile = (cb) => {
 }
 
 module.exports = class Product {
-    constructor(title) {
+    constructor(title, imageUrl, price, description) {
         this.title = title;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.price = price;
     }
 
     save() {
