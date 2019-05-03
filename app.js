@@ -9,19 +9,6 @@ const shopRoutes = require('./routes/shop')
 
 const app = express();
 
-//using pug as template-engine
-// app.set('view engine', 'pug');
-
-//using handlebar as template-engine with layout
-// app.engine('hbs', expressHbs(
-//     {
-//         layoutsDir: 'views/layouts/', 
-//         defaultLayout:'main-layout', 
-//         extname:'hbs'
-//     })
-// );
-// app.set('view engine', 'hbs');
-
 //using ejs as template-engine
 app.set('view engine', 'ejs');
 
@@ -30,7 +17,6 @@ app.set('views', 'views');
 
 //use bodyparser to parse request
 app.use(bodyParser.urlencoded({extended: false}));
-
 
 //use static files 
 app.use(express.static(path.join(__dirname,'public')));
