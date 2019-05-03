@@ -13,13 +13,17 @@ const app = express();
 // app.set('view engine', 'pug');
 
 //using handlebar as template-engine with layout
-app.engine('hbs', expressHbs(
-    {
-        layoutsDir: 'views/layouts/', 
-        defaultLayout:'main-layout', 
-        extname:'hbs'
-    }));
-app.set('view engine', 'hbs');
+// app.engine('hbs', expressHbs(
+//     {
+//         layoutsDir: 'views/layouts/', 
+//         defaultLayout:'main-layout', 
+//         extname:'hbs'
+//     })
+// );
+// app.set('view engine', 'hbs');
+
+//using ejs as template-engine
+app.set('view engine', 'ejs');
 
 //set the views folder
 app.set('views', 'views');
