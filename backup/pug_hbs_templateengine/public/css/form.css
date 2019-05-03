@@ -1,0 +1,40 @@
+.product-form{
+    width: 30rem;;
+    max-width: 90%;
+    margin: auto;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+.form-control label,
+.form-control input {
+    display: block;
+    width: 100%;
+}
+
+.form-control label {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+}
+
+.form-control input {
+    height: 38px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    font: inherit;
+    border-radius: 4px;
+    color: #495057;
+    padding: 0 4px;
+}
+
+.form-control input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
