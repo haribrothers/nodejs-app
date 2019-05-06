@@ -64,8 +64,23 @@ main {
 .main-header__item a:active,
 .main-header__item a.active {
     color: #FAC42F;
-    border-bottom: 2px solid #FAC42F;
 }
+
+.main-header__item a + .main-header__item__border {
+    margin-top: 6px;
+    height: 2px;
+    background-color: #FAC42F;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.2s ease-in-out;
+}
+
+.main-header__item a:active + .main-header__item__border ,
+.main-header__item a:hover + .main-header__item__border,
+.main-header__item a.active + .main-header__item__border {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 
 main {
     padding: 1rem;
@@ -83,7 +98,7 @@ main {
     position: fixed;
     left: 0;
     top: 0;
-    background: white;
+    background: #3C4043;
     z-index: 10;
     padding: 2rem 1rem 1rem 2rem;
     transform: translateX(-100%);
@@ -109,27 +124,46 @@ main {
   
   .mobile-nav__item a {
     text-decoration: none;
-    color: black;
+    display: block;
+    color: #fff;
     font-size: 1.5rem;
     padding: 0.5rem 2rem;
   }
+
+  .mobile-nav__item a + .mobile-nav__item__border {
+    height: 2px;
+    background-color: #DFAF2B;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease-in-out;
+}
   
-  .mobile-nav__item a:active,
+  .mobile-nav__item a:active ,
   .mobile-nav__item a:hover,
   .mobile-nav__item a.active {
-    background: #00695c;
-    color: white;
-    border-radius: 3px;
+    color: #DFAF2B;
   }
+
+  .mobile-nav__item a:active + .mobile-nav__item__border ,
+  .mobile-nav__item a:hover + .mobile-nav__item__border,
+  .mobile-nav__item a.active + .mobile-nav__item__border {
+    transform: scaleX(1);
+  }
+
   
   #side-menu-toggle {
-    border: 1px solid white;
+    border: none;
     font: inherit;
-    padding: 0.5rem;
     display: block;
     background: transparent;
-    color: white;
     cursor: pointer;
+    margin:0.5rem;
+  }
+
+  #side-menu-toggle > svg {
+      width: 24px;
+      stroke: #fff;
+      stroke-width: 3px;
   }
   
   #side-menu-toggle:focus {
@@ -139,7 +173,6 @@ main {
   #side-menu-toggle:active,
   #side-menu-toggle:hover {
     color: #ffeb3b;
-    border-color: #ffeb3b;
   }
   
   .backdrop {

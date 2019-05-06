@@ -17,10 +17,11 @@
                         </header>
                         <div class="card__content">
                             <h2 class="product__price">$<%=product.price %></h2>
-                            <p class="product__description"><%=product.description %></p>
+                            <p class="product__description"><%=product.description.length > 60 ? product.description.substr(0,60) + '...' : product.description %></p>
                         </div>
                         <div class="card__actions">
                             <form action="/add-to-cart" method="POST">
+                                <a href="/products/<%= product.id %>" class="btn btn-primary">More Details</a>
                                 <button class="btn btn-accent">Add to Cart</button>
                             </form>
                         </div>
